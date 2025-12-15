@@ -1,9 +1,15 @@
 {
   "name": "Difficulty Tag Auto-Assigner",
-  "mod": 1,
-  "conflicts": [],
-  "min_point_version": 40,
-  "max_point_version": 99,
+  "version": "1.0.0",
+  "description": "Automatically assigns Hard / Medium / Easy tags to notes based on review statistics. Includes tag removal and customizable thresholds.",
+  "author": "Yuwa (custom addon build)",
+  "homepage": "",
+  "license": "MIT",
+  "min_anki_version": "23.10.0",
+  "max_anki_version": null,
+  "requirements": [],
+  "entry_point": "__init__.py",
+  "config_file": "config.json",
   "config": {
     "hard_lapses_min": 3,
     "hard_ease_max_pct": 230,
@@ -11,8 +17,10 @@
     "easy_ivl_min": 21,
     "easy_ease_min_pct": 250
   },
-  "description": "Automatically assigns Hard / Medium / Easy tags to notes based on review statistics. Includes tag removal and customizable thresholds.",
-  "homepage": "",
-  "author": "Yuwa (custom addon build)",
-  "version": "1.0.0"
+  "tags": [
+    "anki",
+    "addon",
+    "tagging"
+  ],
+  "notes": ""
 }
