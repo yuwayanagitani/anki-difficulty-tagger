@@ -1,98 +1,149 @@
-# Difficulty Tag Auto‑Assigner (5 levels)
+# Anki Difficulty Tagger
 
-Automatically assigns **5 difficulty tags** to your *notes* based on your learning stats (**lapses / interval / ease**).
-
-- Tags: `VeryHard`, `Hard`, `Medium`, `Easy`, `VeryEasy`
-- Runs in the background with a progress window
-- Settings are edited via a **custom GUI** (no extra Tools “Settings” item)
+🔗 **AnkiWeb**  
+https://ankiweb.net/shared/info/1300169603
 
 ---
 
-## What it does
+## What this add-on does
 
-This add-on evaluates each reviewed card (`reps > 0`) and chooses **one** difficulty tag, then:
+**Anki Difficulty Tagger** automatically assigns **difficulty tags** to cards based on your review behavior.  
+Instead of manually tagging cards as “easy” or “hard”, this add-on analyzes your answers and applies tags consistently.
 
-1. Removes any existing difficulty tags from the note  
-2. Adds the newly judged tag to the note  
-3. Updates the note in the collection
+It is designed to help you:
 
-**Decision order (important):**  
-`VeryHard → Hard → VeryEasy → Easy → Medium`
-
-That order matters: earlier rules win.
+- Identify difficult cards quickly
+- Filter decks by difficulty
+- Adjust study strategy using objective criteria
 
 ---
 
-## How to run
+## Core Features
 
-Open Anki, then:
-
-**Tools → Auto-assign difficulty tags (5 levels)**
-
-You’ll be prompted for a search query:
-
-- Leave empty → tag **all** cards in the collection  
-- Enter a query (e.g., `deck:MyDeck is:due`) → tag only matching cards
-
-The add-on updates notes, then calls `mw.reset()` to refresh.
+- 🏷 Automatically assigns difficulty tags to cards
+- 📊 Uses review outcomes (Again / Hard / Good / Easy)
+- 🔁 Updates tags dynamically as difficulty changes
+- 🪶 Lightweight and fast
+- 🧩 Works with any deck and note type
+- ⚙️ Fully configurable tagging rules
 
 ---
 
-## Settings
+## How It Works
 
-Open the add-on’s config screen:
+1. You review cards as usual in Anki
+2. Based on your answers, the add-on evaluates card difficulty
+3. Difficulty tags are added or updated automatically
+4. Old difficulty tags can be removed or replaced
 
-**Tools → Add-ons → (Difficulty Tag Auto‑Assigner) → Config**
-
-This opens the custom GUI.
-
-### Very Hard
-- **Minimum lapses (≥)**: `very_hard_lapses_min`
-- **Max ease (<)**: `very_hard_ease_max_pct` (%)
-
-### Hard
-- **Minimum lapses (≥)**: `hard_lapses_min`
-- **Max ease (<)**: `hard_ease_max_pct` (%)
-
-### Easy
-- **Max lapses (≤)**: `easy_lapses_max`
-- **Min interval (≥)**: `easy_ivl_min` (days)
-- **Min ease (≥)**: `easy_ease_min_pct` (%)
-
-### Very Easy
-- **Min interval (≥)**: `very_easy_ivl_min` (days)
-- **Min ease (≥)**: `very_easy_ease_min_pct` (%)
-
-> Note on “ease”: Anki stores it as `factor` (e.g., 250% is stored as 2500).  
-> This add-on’s GUI uses **percent** (e.g., `250` = 250%).
+This keeps difficulty information **always in sync with your actual performance**.
 
 ---
 
-## Defaults
+## Why Use Difficulty Tags?
 
-The shipped defaults are:
+Difficulty tags allow you to:
 
-- VeryHard: lapses ≥ 5 **or** ease < 200%
-- Hard: lapses ≥ 3 **or** ease < 230%
-- Easy: lapses ≤ 0 **and** interval ≥ 21 days **and** ease ≥ 250%
-- VeryEasy: interval ≥ 90 days **or** ease ≥ 280%
-- Medium: everything else
+- Create filtered decks like:
+  - `tag:hard`
+  - `tag:easy`
+- Focus extra time on weak areas
+- Avoid wasting time on cards you already know well
+- Monitor long-term learning progress
 
----
-
-## Notes / Tips
-
-- Tags are applied **per note**, so if multiple cards belong to the same note, the note ends up with the tag computed from the last processed card for that note (by loop order).
-- New/never-reviewed cards (`reps == 0`) are skipped.
-- If you already use difficulty tags, make sure they match the exact tag names above, since the add-on removes only those five.
+Unlike static tags, these tags **evolve with your learning**.
 
 ---
 
-## Troubleshooting
+## Installation
 
-- **Nothing happens / 0 processed**  
-  Your search may match no cards, or all matched cards may have `reps == 0`.
+### From AnkiWeb (recommended)
 
-- **Tags don’t look updated immediately**  
-  The add-on calls `mw.reset()` after completion, but if you still don’t see changes, try syncing or reopening the browser.
+1. Open Anki  
+2. Tools → Add-ons → Get Add-ons  
+3. Enter the code from AnkiWeb  
+4. Restart Anki  
 
+👉 https://ankiweb.net/shared/info/1300169603
+
+---
+
+### Manual (GitHub)
+
+1. Download or clone this repository
+2. Place it in:
+
+   `Anki2/<profile>/addons21/anki-difficulty-tagger/`
+
+3. Restart Anki
+
+---
+
+## Configuration
+
+Open:
+
+**Tools → Add-ons → Anki Difficulty Tagger → Config**
+
+Available options include:
+
+- Enable / disable tagging
+- Tag names for each difficulty level
+- Rules for assigning difficulty
+- Whether to remove old difficulty tags
+- Scope (review-only or include other actions)
+
+Settings are applied automatically during normal reviews.
+
+---
+
+## Usage
+
+- Simply review cards as usual
+- Tags are updated automatically in the background
+- No manual action is required
+
+You can then use the Browser to:
+
+- Search by difficulty tag
+- Create filtered decks
+- Analyze difficult cards in bulk
+
+---
+
+## Performance & Safety
+
+- No background polling
+- Operates only during review events
+- Does **not** modify scheduling or intervals
+- Safe to enable on large collections
+
+---
+
+## Compatibility
+
+- Anki 24.x
+- Anki 25.x
+- Windows / macOS / Linux
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+Created by **@yuwayanagitani**
+
+---
+
+## Related Add-ons
+
+- **AI Grader** – AI-based grading of answers
+- **Anki Bar Graph** – Visualize recent review activity
+- **AI Card Explainer** – Add explanations to cards
+
+These add-ons can be combined to build a **data-driven Anki workflow**.
